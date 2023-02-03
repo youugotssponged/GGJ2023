@@ -25,19 +25,18 @@ public class Enemy : MonoBehaviour, IEnemy
 
         if (this.Health <= 0)
         {
-            // Destroy this and give player currency.
+            DestroyEnemy();
+            CreditPlayer();
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void DestroyEnemy()
+    {   
+        // Destroy this and give player currency.
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreditPlayer()
     {
-        
+        // ToDo Increase currency value of player.
     }
 }
