@@ -12,6 +12,8 @@ local.properties
 .settings/
 .loadpath
 
+UserSettings/
+
 # External tool builders
 .externalToolBuilders/
 
@@ -237,6 +239,7 @@ obj/
 # VS Code generated #
 # ===================================== #
 .vscode
+.vs
 
 # ============ #
 # OS generated #
