@@ -52,10 +52,11 @@ public class TowerSpawnUI : MonoBehaviour
 
     public void ConfirmTowerSelection()
     {
-        if (Player.Currency > 0 && Player.Currency >= SelectedTower.Cost)
+        if (Player.Currency > 0 && Player.Currency >= SelectedTower.InitialCost)
         {
             // Spawn tower to Spawn Point that was given
-            Player.Currency -= SelectedTower.Cost;
+            Player.Currency -= SelectedTower.InitialCost;
+            SelectedTower.TotalSpentOnTower = SelectedTower.InitialCost;
 
             var towerObj = TowerPrefabsToChooseFrom
                 .Where(x => x.name.Contains(SelectedTower.TowerName))
