@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<waves>
+   <wave id="wave1">
+	   <normal>10</normal>
+	   <fast>0</fast>
+	   <strong>0</strong>
+   </wave>
+	<wave id="wave2">
+		<normal>5</normal>
+		<fast>2</fast>
+		<strong>0</strong>
+   </wave>
+	<wave id="wave3">
+		<normal>10</normal>
+		<fast>5</fast>
+		<strong>1</strong>
+   </wave>
+   
+</waves>
