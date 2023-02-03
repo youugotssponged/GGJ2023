@@ -13,6 +13,8 @@ local.properties
 .loadpath
 
 UserSettings/
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+ProjectSettings/Packages/com.unity.polybrush/
 
 # External tool builders
 .externalToolBuilders/
