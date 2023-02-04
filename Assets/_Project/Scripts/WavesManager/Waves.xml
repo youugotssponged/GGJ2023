@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<waves>
+   <wave id="wave1">
+	   <normal>10</normal>
+	   <fast>0</fast>
+	   <strong>0</strong>
+	   <spawnSpeed>1.0</spawnSpeed>
+	</wave>
+	<wave id="wave2">
+		<normal>0</normal>
+		<fast>5</fast>
+		<strong>0</strong>
+		<spawnSpeed>1.0</spawnSpeed>
+	</wave>
+	<wave id="wave3">
+		<normal>0</normal>
+		<fast>0</fast>
+		<strong>1</strong>
+		<spawnSpeed>1.0</spawnSpeed>
+	</wave>
+	<wave id="wave4">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave5">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave6">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave7">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave8">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave9">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave10">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+   
+</waves>
