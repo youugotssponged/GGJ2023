@@ -80,7 +80,7 @@ public class WaveManager : MonoBehaviour
         {
             if (Restarting)
                 break;
-            //ToDo increase enemy strength after wave 10
+
             GameObject instantiatedGameObject = Instantiate(enemyObject, SpawnPoint.position, SpawnPoint.localRotation);
 
             if (WaveNumber > 10)
@@ -130,7 +130,6 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator WaitBeforeLoadingWave()
     {
-        //ToDo Link to UI object that shows time remaining before next wave.
         //yield return new WaitForSeconds(10);
         NextWaveCountdownText.gameObject.SetActive(true);
         for (int i = 10; i >= 0; i--)
