@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -12,11 +10,12 @@ public class WaveManager : MonoBehaviour
     public GameObject FastEnemyPrefab;
     public GameObject StrongEnemyPrefab;
     public Transform SpawnPoint;
-    private int WaveNumber { get; set; }
+    public int WaveNumber { get; set; }
     private int NormalEnemiesToSpawn { get; set; }
     private int FastEnemiesToSpawn { get; set; }
     private int StrongEnemiesToSpawn { get; set; }
     private float SpawnSpeed { get; set; }
+    private bool Restarting { get; set; }
     public int EnemiesRemaining { get; set; }
 
     // Start is called before the first frame update
@@ -72,6 +71,8 @@ public class WaveManager : MonoBehaviour
         List<GameObject> shuffledEnemyObjects = Shuffle(orderedEnemyObjects);
         foreach (GameObject enemyObject in shuffledEnemyObjects)
         {
+            if (Restarting)
+                break;
             //ToDo increase enemy strength after wave 10
             GameObject instantiatedGameObject = Instantiate(enemyObject, SpawnPoint.position, SpawnPoint.localRotation);
             yield return new WaitForSeconds(SpawnSpeed);
@@ -99,7 +100,10 @@ public class WaveManager : MonoBehaviour
         // When all enemies are destroyed, wait 10 seconds before loading next wave.
         if (EnemiesRemaining <= 0)
         {
-            StartCoroutine(WaitBeforeLoadingWave());
+            if (WaveNumber == 10)
+                ShowWave11Screen();
+            else
+                StartCoroutine(WaitBeforeLoadingWave());
         }
     }
 
@@ -107,8 +111,34 @@ public class WaveManager : MonoBehaviour
     {
         //ToDo Link to UI object that shows time remaining before next wave.
         yield return new WaitForSeconds(10);
+        Restarting = false;
 
         WaveNumber++;
         LoadWave();
+    }
+
+    public void Restart()
+    {
+        Restarting = true;
+        WaveNumber = 0;
+        var aliveEnemies = FindObjectsOfType<Enemy>();
+        EnemiesRemaining = aliveEnemies.Length;
+        foreach (var enemy in aliveEnemies)
+            enemy.DestroyEnemy();
+    }
+
+    public void ContinueButtonPressed()
+    {
+        Time.timeScale = 1;
+        var wave11Panel = GameObject.Find("Canvas").GetComponentsInChildren<RectTransform>(true).First(x => x.name == "Wave 11 panel");
+        wave11Panel.gameObject.SetActive(false);
+        StartCoroutine(WaitBeforeLoadingWave());
+    }
+
+    private void ShowWave11Screen()
+    {
+        Time.timeScale = 0;
+        var wave11Panel = GameObject.Find("Canvas").GetComponentsInChildren<RectTransform>(true).First(x => x.name == "Wave 11 panel");
+        wave11Panel.gameObject.SetActive(true);
     }
 }
