@@ -27,7 +27,7 @@ public class WaveManager : MonoBehaviour
     {
         WaveCounterText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Wave count");
         NextWaveCountdownText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>(true).First(x => x.name == "Next wave countdown");
-        WaveNumber = 1;
+        WaveNumber = 10;
         LoadWave();
     }
 
