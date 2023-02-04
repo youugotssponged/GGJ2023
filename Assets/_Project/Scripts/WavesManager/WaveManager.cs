@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WaveNumber = 1;
+        WaveNumber = 20;
         LoadWave();
     }
 
@@ -74,6 +74,20 @@ public class WaveManager : MonoBehaviour
         {
             //ToDo increase enemy strength after wave 10
             GameObject instantiatedGameObject = Instantiate(enemyObject, SpawnPoint.position, SpawnPoint.localRotation);
+
+            if (WaveNumber > 10)
+            {
+                int originalEnemyHealth = instantiatedGameObject.GetComponent<Enemy>().Health;
+                // Gets percentage based on wave number.  Then square percentage and add to total health.
+                //Example, Wave 11, Enemy Health 100
+                // Wave based percentage is 1.1%, which is 1.1.
+                // Square this value, to create exponential growth as rounds continue.
+                // Divide by 1000 to get correct percentage
+                double percentageBasedOnWave = WaveNumber / 1000.0;
+                double baseHealthIncrease = originalEnemyHealth * percentageBasedOnWave;
+                instantiatedGameObject.GetComponent<Enemy>().Health += Convert.ToInt32(Math.Pow(baseHealthIncrease, 3));
+            }
+
             yield return new WaitForSeconds(SpawnSpeed);
         }
     }
