@@ -38,10 +38,10 @@ public class MachineTower : MonoBehaviour, ITower
         }
     }
 
-    private void SwapTowerModel(int index)
+    private void SwapTowerModel(int zeroIndex)
     {
         Destroy(gameObject.transform.GetChild(0).gameObject);
-        var go = Instantiate(UpgradeTowers[index], gameObject.transform);
+        var go = Instantiate(UpgradeTowers[zeroIndex], gameObject.transform);
         go.transform.localScale = ScaleFactor;
     }
 }
