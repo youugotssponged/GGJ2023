@@ -51,10 +51,10 @@ MonoBehaviour:
   <EffectOnEnemy>k__BackingField: {fileID: 5945443685296771018, guid: 1fa98b8be7a97554ab43e96c4afe7bf9, type: 3}
   <ShootSound>k__BackingField: {fileID: 8300000, guid: e7d7fbd7bee60b2429ebce0161c0b70a, type: 3}
   <UpgradeTowers>k__BackingField:
-  - {fileID: 919132149155446097, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
-  - {fileID: 919132149155446097, guid: 72e052dad3cfddb4db28282e4ac6a61e, type: 3}
-  - {fileID: 919132149155446097, guid: 78464f52c0ce5b34eb4516e5e3504403, type: 3}
-  - {fileID: 919132149155446097, guid: 6d5228979ed9d404b8ba32fed971a171, type: 3}
+  - {fileID: 4766675673631134287, guid: 7180fada69690454d835a35c45971be7, type: 3}
+  - {fileID: 7849356125878859896, guid: 2a5cf0175149a7a4e891260aaa48a945, type: 3}
+  - {fileID: 651518649380121680, guid: 48a8b5789a5ef6c4bb63ac07a276dd3e, type: 3}
+  - {fileID: 2828156959519093134, guid: 6cf104a74c2d8c648b24f521aed0ada6, type: 3}
 --- !u!135 &7364500788094688204
 SphereCollider:
   m_ObjectHideFlags: 0
