@@ -3,11 +3,11 @@ using UnityEngine;
 public class SniperTower : MonoBehaviour, ITower
 {
     public string TowerName => "SniperTower";
-    public int InitialCost => 10;
+    public int InitialCost => 300;
     public int UpgradeLevel { get; set; } = 1;
     public int TotalSpentOnTower { get; set; }
-    public float CoolDownTimeInSeconds => 5;
-    public int Damage => 100;
+    public float CoolDownTimeInSeconds { get; set; } = 6;
+    public int Damage { get; set; } = 130;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
     [field: SerializeField] public AudioClip ShootSound { get; set; }
 
@@ -22,6 +22,12 @@ public class SniperTower : MonoBehaviour, ITower
 
     public void ApplyUpgrade()
     {
+        CoolDownTimeInSeconds -= 0.2f;
+        Damage += 30;
+
+        var sc = GetComponent<SphereCollider>();
+        sc.radius += 2f;
+
         switch (UpgradeLevel)
         {
             case 1: 
@@ -43,9 +49,5 @@ public class SniperTower : MonoBehaviour, ITower
         Destroy(gameObject.transform.GetChild(0).gameObject);
         var go = Instantiate(UpgradeTowers[zeroIndex], gameObject.transform);
         go.transform.localScale = ScaleFactor;
-
-        // Fix rotation issue
-        //var go2 = go.transform.GetChild(0).GetChild(0).GetChild(0);
-        //go2.Rotate(0, 180, 0);
     }
 }

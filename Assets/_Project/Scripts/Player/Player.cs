@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IPlayer
 {
-    public int Currency { get; set; } = 1000;
+    public int Currency { get; set; }
+    private int InitialCurrency { get; } = 1000;
     public int ExperienceLevel { get; set; } = 1;
     public int Health { get; set; }
 
@@ -18,7 +19,8 @@ public class Player : MonoBehaviour, IPlayer
     void Start()
     {
         Health = MaxHealth;
-        GameOverPanel = GameObject.Find("Canvas").GetComponentsInChildren<RectTransform>(true).First(x => x.name == "Game over panel").gameObject;
+        Currency = InitialCurrency;
+        GameOverPanel = GameObject.Find("Hidden").GetComponentsInChildren<Canvas>(true).First(x => x.name == "Game over panel").gameObject;
         CurrencyText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Currency value");
         HealthText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Health value");
         UpdateCurrencyText();
@@ -99,9 +101,8 @@ public class Player : MonoBehaviour, IPlayer
 
     public void RestartButtonPressed()
     {
-        Debug.Log("Restarting...");
         Health = MaxHealth;
-        Currency = 0;
+        Currency = InitialCurrency;
         ExperienceLevel = 1;
 
         UpdateHealthText();
@@ -111,6 +112,13 @@ public class Player : MonoBehaviour, IPlayer
         GameOverPanel.SetActive(false);
         var camController = GameObject.Find("VirtualCamera").GetComponent<CameraController>();
         camController.allowDragging = true;
+
+        var sockets = FindObjectsOfType<TowerSocket>();
+        foreach (var socket in sockets)
+        {
+            Destroy(socket.GetComponentInChildren<TowerAI>().gameObject);
+            socket.IsOccupied = false;
+        }
 
         WaveManager.Restart();
     }

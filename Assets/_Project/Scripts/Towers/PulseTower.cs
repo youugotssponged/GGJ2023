@@ -3,12 +3,11 @@ using UnityEngine;
 public class PulseTower : MonoBehaviour, ITower
 {
     public string TowerName => "PulseTower";
-    public int Cost => 10;
     public int UpgradeLevel { get; set; } = 1;
-    public int InitialCost => 50;
+    public int InitialCost => 200;
     public int TotalSpentOnTower { get; set; }
-    public int Damage { get; set; } = 10;
-    public float CoolDownTimeInSeconds => 1;
+    public int Damage { get; set; } = 50;
+    public float CoolDownTimeInSeconds { get; set; } = 1.3f;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
     [field: SerializeField] public AudioClip ShootSound { get; set; }
 
@@ -24,6 +23,12 @@ public class PulseTower : MonoBehaviour, ITower
 
     public void ApplyUpgrade()
     {
+        CoolDownTimeInSeconds -= 0.15f;
+        Damage += 25;
+
+        var sc = GetComponent<SphereCollider>();
+        sc.radius += 1.1f;
+
         switch (UpgradeLevel)
         {
             case 1:
