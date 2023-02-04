@@ -22,19 +22,24 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WaveNumber = 4;
+        WaveNumber = 1;
         LoadWave();
     }
 
     private void LoadWave()
     {
+        // If we are past wave 10, just load wave 10.
+        Debug.Log("Wave Number: " + WaveNumber);
+        int waveToLoad = WaveNumber;
+        if (WaveNumber > 10)
+            waveToLoad = 10;
+
         XmlDocument xmlDoc = new XmlDocument();
 
-        Debug.Log("Loading XML doc.");
         xmlDoc.Load(@"Assets\_Project\Scripts\WavesManager\Waves.xml");
 
         XmlNodeList waveNodes = xmlDoc.GetElementsByTagName("wave");
-        XmlNode waveNode = waveNodes[WaveNumber - 1];
+        XmlNode waveNode = waveNodes[waveToLoad - 1];
         XmlNodeList childNodes = waveNode.ChildNodes;
         NormalEnemiesToSpawn = int.Parse(childNodes[0].InnerText);
         FastEnemiesToSpawn = int.Parse(childNodes[1].InnerText);
@@ -61,11 +66,14 @@ public class WaveManager : MonoBehaviour
             orderedEnemyObjects.Add(StrongEnemyPrefab);
         }
 
+        EnemiesRemaining = orderedEnemyObjects.Count;
+
         // Creates a shuffled list, to make the wave seem more random.
         List<GameObject> shuffledEnemyObjects = Shuffle(orderedEnemyObjects);
         foreach (GameObject enemyObject in shuffledEnemyObjects)
         {
-            Instantiate(enemyObject, SpawnPoint.position, SpawnPoint.localRotation);
+            //ToDo increase enemy strength after wave 10
+            GameObject instantiatedGameObject = Instantiate(enemyObject, SpawnPoint.position, SpawnPoint.localRotation);
             yield return new WaitForSeconds(SpawnSpeed);
         }
     }
@@ -84,9 +92,23 @@ public class WaveManager : MonoBehaviour
         return values;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateEnemiesRemaining()
     {
-        
+        EnemiesRemaining--;
+
+        // When all enemies are destroyed, wait 10 seconds before loading next wave.
+        if (EnemiesRemaining <= 0)
+        {
+            StartCoroutine(WaitBeforeLoadingWave());
+        }
+    }
+
+    private IEnumerator WaitBeforeLoadingWave()
+    {
+        //ToDo Link to UI object that shows time remaining before next wave.
+        yield return new WaitForSeconds(10);
+
+        WaveNumber++;
+        LoadWave();
     }
 }
