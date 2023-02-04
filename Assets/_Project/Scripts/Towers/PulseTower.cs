@@ -7,7 +7,12 @@ public class PulseTower : MonoBehaviour, ITower
     public int UpgradeLevel { get; set; } = 1;
     public int InitialCost => 200;
     public int TotalSpentOnTower { get; set; }
-    
+
+    public void Awake()
+    {
+        TotalSpentOnTower = InitialCost;
+    }
+
     public void ApplyUpgrade()
     {
 

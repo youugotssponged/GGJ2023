@@ -16,7 +16,7 @@ public class TowerSpawnUI : MonoBehaviour
     private IPlayer Player;
     private static Transform SpawnAt;
     private static TowerSocket LastChosenSocket;
-    private ITower SelectedTower;
+    private GameObject SelectedTowerObj;
 
     private void Awake()
     {
@@ -40,6 +40,7 @@ public class TowerSpawnUI : MonoBehaviour
 
     public void ShowSpawnMenuUI()
     {
+        PlayerCurrencyText.text = "Currency: " + Player.Currency;
         TowerSpawnUIMenuPanel.SetActive(true);
     }
 
@@ -47,31 +48,26 @@ public class TowerSpawnUI : MonoBehaviour
     {
         LastChosenSocket = null;
         SpawnAt = null;
+        SelectedTowerObj = null;
         TowerSpawnUIMenuPanel.SetActive(false);     
     }
 
     public void SelectTower(string TowerName)
     {
-        var towerObj = TowerPrefabsToChooseFrom
+        SelectedTowerObj = TowerPrefabsToChooseFrom
                 .Where(x => x.name.Contains(TowerName))
                 .FirstOrDefault();
-
-        SelectedTower = towerObj.GetComponent<ITower>();
     }
 
     public void ConfirmTowerSelection()
     {
-        if (Player.Currency > 0 && Player.Currency >= SelectedTower.InitialCost)
+        var tower = SelectedTowerObj.GetComponent<ITower>();
+        if (Player.Currency > 0 && Player.Currency >= tower.InitialCost)
         {
             // Spawn tower to Spawn Point that was given
-            Player.Currency -= SelectedTower.InitialCost;
-            SelectedTower.TotalSpentOnTower = SelectedTower.InitialCost;
-
-            var towerObj = TowerPrefabsToChooseFrom
-                .Where(x => x.name.Contains(SelectedTower.TowerName))
-                .FirstOrDefault();
-
-            Instantiate(towerObj, SpawnAt);
+            Player.Currency -= tower.InitialCost;
+            Instantiate(SelectedTowerObj, SpawnAt);
+            
             LastChosenSocket.IsOccupied = true;
             LastChosenSocket = null;
             SpawnAt = null;
