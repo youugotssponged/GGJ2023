@@ -9,7 +9,8 @@ public class Player : MonoBehaviour, IPlayer
     public int Health { get; set; }
 
     private GameObject GameOverPanel;
-
+    private TextMeshProUGUI CurrencyText;
+    private TextMeshProUGUI HealthText;
     public WaveManager WaveManager;
     private int MaxHealth { get; } = 2;
 
@@ -18,6 +19,10 @@ public class Player : MonoBehaviour, IPlayer
     {
         Health = MaxHealth;
         GameOverPanel = GameObject.Find("Canvas").GetComponentsInChildren<RectTransform>(true).First(x => x.name == "Game over panel").gameObject;
+        CurrencyText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Currency value");
+        HealthText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Health value");
+        UpdateCurrencyText();
+        UpdateHealthText();
     }
 
     // Update is called once per frame
@@ -28,7 +33,7 @@ public class Player : MonoBehaviour, IPlayer
 
     public void TakeDamage(int receivingDamage)
     {
-        if (Health > 0 && receivingDamage > 0)
+        if (Health > 0)
         {
             Health -= receivingDamage;
             UpdateBaseColour();
@@ -37,7 +42,13 @@ public class Player : MonoBehaviour, IPlayer
                 Health = 0; //in case health is 1 and takes 2 damage, won't display minus health
                 PlayerDead();
             }
+            UpdateHealthText();
         }
+    }
+
+    private void UpdateHealthText()
+    {
+        HealthText.text = Health.ToString();
     }
 
     private void UpdateBaseColour()
@@ -68,6 +79,12 @@ public class Player : MonoBehaviour, IPlayer
     public void GainCurrency(int receivedCurrency)
     {
         Currency += receivedCurrency;
+        UpdateCurrencyText();
+    }
+
+    private void UpdateCurrencyText()
+    {
+        CurrencyText.text = Currency.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -86,6 +103,9 @@ public class Player : MonoBehaviour, IPlayer
         Health = MaxHealth;
         Currency = 0;
         ExperienceLevel = 1;
+
+        UpdateHealthText();
+        UpdateCurrencyText();
 
         Time.timeScale = 1;
         GameOverPanel.SetActive(false);

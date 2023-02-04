@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using TMPro;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class WaveManager : MonoBehaviour
     public GameObject FastEnemyPrefab;
     public GameObject StrongEnemyPrefab;
     public Transform SpawnPoint;
+    private TextMeshProUGUI WaveCounterText;
+    private TextMeshProUGUI NextWaveCountdownText;
     public int WaveNumber { get; set; }
     private int NormalEnemiesToSpawn { get; set; }
     private int FastEnemiesToSpawn { get; set; }
@@ -22,7 +25,9 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WaveNumber = 10;
+        WaveCounterText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Wave count");
+        NextWaveCountdownText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>(true).First(x => x.name == "Next wave countdown");
+        WaveNumber = 1;
         LoadWave();
     }
 
@@ -30,6 +35,7 @@ public class WaveManager : MonoBehaviour
     {
         // If we are past wave 10, just load wave 10.
         Debug.Log("Wave Number: " + WaveNumber);
+        WaveCounterText.text = $"Wave {WaveNumber}";
         int waveToLoad = WaveNumber;
         if (WaveNumber > 10)
             waveToLoad = 10;
@@ -125,8 +131,15 @@ public class WaveManager : MonoBehaviour
     private IEnumerator WaitBeforeLoadingWave()
     {
         //ToDo Link to UI object that shows time remaining before next wave.
-        yield return new WaitForSeconds(10);
+        //yield return new WaitForSeconds(10);
+        NextWaveCountdownText.gameObject.SetActive(true);
+        for (int i = 10; i >= 0; i--)
+        {
+            NextWaveCountdownText.text = $"Next wave in {i}";
+            yield return new WaitForSeconds(1);
+        }
         Restarting = false;
+        NextWaveCountdownText.gameObject.SetActive(false);
 
         WaveNumber++;
         LoadWave();
