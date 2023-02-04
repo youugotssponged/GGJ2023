@@ -42,7 +42,7 @@ public class WaveManager : MonoBehaviour
 
         XmlDocument xmlDoc = new XmlDocument();
 
-        xmlDoc.Load(@"Assets\_Project\Scripts\WavesManager\Waves.xml");
+        xmlDoc.Load($@"{Application.streamingAssetsPath}\Waves.xml");
 
         XmlNodeList waveNodes = xmlDoc.GetElementsByTagName("wave");
         XmlNode waveNode = waveNodes[waveToLoad - 1];

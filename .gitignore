@@ -220,7 +220,6 @@ pip-log.txt
 # =============== #
 [Tt]emp/
 [Ll]ibrary
-Assets/StreamingAssets*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
