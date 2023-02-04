@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IEnemy
@@ -19,6 +17,8 @@ public class Enemy : MonoBehaviour, IEnemy
         set { _health = value; }
     }
 
+    public int AttackDamage { get; set; } = 1;
+
     public void TakeDamage(int recievingDamage)
     {
         this.Health -= recievingDamage;
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour, IEnemy
         }
     }
     public void DestroyEnemy()
-    {   
+    {
         // Destroy this and give player currency.
         Destroy(gameObject);
     }

@@ -4,34 +4,18 @@ using UnityEngine;
 
 public class MachineTower : MonoBehaviour, ITower
 {
-    public int Cost { get; } = 10;
+    public int InitialCost { get; } = 100;
     public string TowerName { get; } = "MachineTower";
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public int UpgradeLevel { get; set; } = 1;
+    public int TotalSpentOnTower { get; set; }
 
     public void ApplyUpgrade()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void FireWeapon()
     {
-        throw new System.NotImplementedException();
-    }
 
-    public void OnTowerRemoved()
-    {
-        throw new System.NotImplementedException();
     }
 }

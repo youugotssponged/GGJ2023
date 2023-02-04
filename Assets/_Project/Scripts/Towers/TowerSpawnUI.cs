@@ -1,20 +1,29 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class TowerSpawnUI : MonoBehaviour
 {
-    [SerializeField] private IPlayer Player;
+
     [SerializeField] private ITower[] TowersToShowInSpawnMenu;
     [SerializeField] private GameObject[] TowerPrefabsToChooseFrom;
     [SerializeField] private GameObject TowerSpawnUIMenuPanel;
 
+    public Text PlayerCurrencyText;
+    public AudioClip CashRegisterSound;
+    private AudioSource _Source;
+    private IPlayer Player;
     private static Transform SpawnAt;
     private static TowerSocket LastChosenSocket;
     private ITower SelectedTower;
 
     private void Awake()
     {
-        Player = new FakePlayer();
+        _Source = GetComponent<AudioSource>();
+        _Source.clip = CashRegisterSound;
+        Player = GameObject.Find("Player").GetComponent<IPlayer>();
+        PlayerCurrencyText.text = "Currency: " + Player.Currency;
     }
 
     public void ShowSpawnMenu(TowerSocket socketToSpawnAt)
@@ -52,22 +61,21 @@ public class TowerSpawnUI : MonoBehaviour
 
     public void ConfirmTowerSelection()
     {
-        if (Player.Currency > 0 && Player.Currency >= SelectedTower.Cost)
+        if (Player.Currency > 0 && Player.Currency >= SelectedTower.InitialCost)
         {
             // Spawn tower to Spawn Point that was given
-            Player.Currency -= SelectedTower.Cost;
+            Player.Currency -= SelectedTower.InitialCost;
+            SelectedTower.TotalSpentOnTower = SelectedTower.InitialCost;
 
             var towerObj = TowerPrefabsToChooseFrom
                 .Where(x => x.name.Contains(SelectedTower.TowerName))
                 .FirstOrDefault();
 
-            Debug.Log(SelectedTower.TowerName);
-            Debug.Log(towerObj != null);
-            
             Instantiate(towerObj, SpawnAt);
             LastChosenSocket.IsOccupied = true;
             LastChosenSocket = null;
             SpawnAt = null;
+            _Source.Play();
             CloseSpawnMenu();
         }
     }

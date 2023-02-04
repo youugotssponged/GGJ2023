@@ -1,8 +1,9 @@
 public interface ITower 
 {
     public string TowerName { get; }
-    public int Cost { get; }
+    public int InitialCost { get; }
+    public int TotalSpentOnTower { get; set; }
+    public int UpgradeLevel { get; set; }
     public void ApplyUpgrade();
-    public void OnTowerRemoved();
     public void FireWeapon();
 }
