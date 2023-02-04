@@ -7,6 +7,9 @@ public class PulseTower : MonoBehaviour, ITower
     public int UpgradeLevel { get; set; } = 1;
     public int InitialCost => 200;
     public int TotalSpentOnTower { get; set; }
+    public int Damage { get; set; } = 10;
+    public float CoolDownTimeInSeconds => 1;
+    [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
 
     public void Awake()
     {
@@ -14,11 +17,6 @@ public class PulseTower : MonoBehaviour, ITower
     }
 
     public void ApplyUpgrade()
-    {
-
-    }
-
-    public void FireWeapon()
     {
 
     }

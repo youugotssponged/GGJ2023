@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3528742401146509086}
   - component: {fileID: 5356437482673678443}
+  - component: {fileID: 5907183725133264695}
+  - component: {fileID: 5587062004349834617}
   m_Layer: 0
   m_Name: PulseTower
   m_TagString: Untagged
@@ -43,6 +45,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ae3530185a2c7145a6842dbc3924338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &5907183725133264695
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725391856059235369}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5587062004349834617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725391856059235369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29d64344154fc040b1e4947493b83ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6894832112793535875

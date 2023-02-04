@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MachineTower : MonoBehaviour, ITower
 {
-    public int InitialCost { get; } = 100;
+    public int InitialCost { get; } = 20;
     public string TowerName { get; } = "MachineTower";
     public int UpgradeLevel { get; set; } = 1;
     public int TotalSpentOnTower { get; set; }
+    public float CoolDownTimeInSeconds => 3;
+
+    public int Damage => 20;
+    [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
 
     public void Awake()
     {
@@ -15,11 +17,6 @@ public class MachineTower : MonoBehaviour, ITower
     }
 
     public void ApplyUpgrade()
-    {
-
-    }
-
-    public void FireWeapon()
     {
 
     }
