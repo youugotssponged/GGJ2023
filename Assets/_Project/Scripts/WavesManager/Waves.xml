@@ -4,16 +4,25 @@
 	   <normal>10</normal>
 	   <fast>0</fast>
 	   <strong>0</strong>
-   </wave>
+	   <spawnSpeed>1.0</spawnSpeed>
+	</wave>
 	<wave id="wave2">
-		<normal>5</normal>
-		<fast>2</fast>
-		<strong>0</strong>
-   </wave>
-	<wave id="wave3">
-		<normal>10</normal>
+		<normal>0</normal>
 		<fast>5</fast>
+		<strong>0</strong>
+		<spawnSpeed>1.0</spawnSpeed>
+	</wave>
+	<wave id="wave3">
+		<normal>0</normal>
+		<fast>0</fast>
 		<strong>1</strong>
-   </wave>
+		<spawnSpeed>1.0</spawnSpeed>
+	</wave>
+	<wave id="wave3">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
    
 </waves>
