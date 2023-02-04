@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MachineTower : MonoBehaviour, ITower
 {
-    public int InitialCost { get; } = 20;
+    public int InitialCost { get; } = 100;
     public string TowerName { get; } = "MachineTower";
     public int UpgradeLevel { get; set; } = 1;
     public int TotalSpentOnTower { get; set; }
-    public float CoolDownTimeInSeconds => 0.6f;
+    public float CoolDownTimeInSeconds { get; set; } = 0.65f;
 
-    public int Damage => 5;
+    public int Damage { get; set; } = 30;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
     [field: SerializeField] public AudioClip ShootSound { get; set; }
     [field: SerializeField] public GameObject[] UpgradeTowers { get; set; }
@@ -22,6 +22,12 @@ public class MachineTower : MonoBehaviour, ITower
 
     public void ApplyUpgrade()
     {
+        CoolDownTimeInSeconds -= 0.1f;
+        Damage += 50;
+
+        var sc = GetComponent<SphereCollider>();
+        sc.radius += 1;
+
         switch (UpgradeLevel)
         {
             case 1:

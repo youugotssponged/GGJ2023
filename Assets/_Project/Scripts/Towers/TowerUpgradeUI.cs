@@ -14,6 +14,7 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
     private GameObject TowerToSell;
     private TowerSocket SocketRef;
     public double SellTaxPercent = 0.75d;
+    public Text UpgradeCostText;
 
     public void Awake()
     {
@@ -28,6 +29,7 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
         TowerToSell = socketToApplyTowerUpgradeTo.SpawnPoint.GetChild(1).gameObject;
         SelectedTower = TowerToSell.GetComponent<ITower>();
         TowerUpgradeUIPanelRef.SetActive(true);
+        UpgradeCostText.text = "Next Upgrade: " + (SelectedTower.InitialCost * SelectedTower.UpgradeLevel);
     }
 
     public void SellSelectedTower()
