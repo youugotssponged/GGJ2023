@@ -1,8 +1,4 @@
-using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -18,21 +14,9 @@ public class MainMenuController : MonoBehaviour
 
     }
 
-    public void OnPointerEnter(BaseEventData data)
+    public void ExitButtonClicked()
     {
-        Debug.Log("pointer enter");
-        var pointerEvent = data as PointerEventData;
-        var gameObject = pointerEvent.hovered.First();
-        gameObject.GetComponent<RawImage>().color = new Color(255, 245, 161);
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().fontStyle = FontStyles.Bold;
+        Debug.Log("exit button");
     }
 
-    public void OnPointerExit(BaseEventData data)
-    {
-        Debug.Log("pointer exit");
-        var pointerEvent = data as PointerEventData;
-        var gameObject = pointerEvent.hovered.First();
-        gameObject.GetComponent<RawImage>().color = new Color(255, 255, 255);
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
-    }
 }

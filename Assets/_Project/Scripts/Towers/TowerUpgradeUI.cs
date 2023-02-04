@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class TowerUpgradeUI : MonoBehaviour, IDisposable
@@ -31,7 +30,7 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
 
     public void SellSelectedTower()
     {
-        Player.Currency += (int)(SelectedTower.TotalSpentOnTower * SellTaxPercent);
+        Player.GainCurrency((int)(SelectedTower.TotalSpentOnTower * SellTaxPercent));
         SocketRef.IsOccupied = false;
         Destroy(TowerToSell);
         _Source.Play();
@@ -44,7 +43,7 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
         if (Player.Currency > 0 && Player.Currency >= upgradeCost)
         {
             SelectedTower.UpgradeLevel += 1;
-            Player.Currency -= upgradeCost;
+            Player.GainCurrency(-upgradeCost);
             SelectedTower.TotalSpentOnTower += upgradeCost;
 
             SelectedTower.ApplyUpgrade();

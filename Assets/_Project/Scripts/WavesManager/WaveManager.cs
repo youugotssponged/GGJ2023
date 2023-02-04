@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     public Transform SpawnPoint;
     private TextMeshProUGUI WaveCounterText;
     private TextMeshProUGUI NextWaveCountdownText;
+    private GameObject Wave11Screen;
     public int WaveNumber { get; set; }
     private int NormalEnemiesToSpawn { get; set; }
     private int FastEnemiesToSpawn { get; set; }
@@ -27,6 +28,7 @@ public class WaveManager : MonoBehaviour
     {
         WaveCounterText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Wave count");
         NextWaveCountdownText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>(true).First(x => x.name == "Next wave countdown");
+        Wave11Screen = GameObject.Find("Hidden").GetComponentsInChildren<Canvas>(true).First(x => x.name == "Wave 11 panel").gameObject;
         WaveNumber = 10;
         LoadWave();
     }
@@ -157,15 +159,13 @@ public class WaveManager : MonoBehaviour
     public void ContinueButtonPressed()
     {
         Time.timeScale = 1;
-        var wave11Panel = GameObject.Find("Canvas").GetComponentsInChildren<RectTransform>(true).First(x => x.name == "Wave 11 panel");
-        wave11Panel.gameObject.SetActive(false);
+        Wave11Screen.SetActive(false);
         StartCoroutine(WaitBeforeLoadingWave());
     }
 
     private void ShowWave11Screen()
     {
         Time.timeScale = 0;
-        var wave11Panel = GameObject.Find("Canvas").GetComponentsInChildren<RectTransform>(true).First(x => x.name == "Wave 11 panel");
-        wave11Panel.gameObject.SetActive(true);
+        Wave11Screen.SetActive(true);
     }
 }
