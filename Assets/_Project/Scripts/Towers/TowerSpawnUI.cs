@@ -45,7 +45,7 @@ public class TowerSpawnUI : MonoBehaviour
         LastChosenSocket = null;
         SpawnAt = null;
         SelectedTowerObj = null;
-        TowerSpawnUIMenuPanel.SetActive(false);     
+        TowerSpawnUIMenuPanel.SetActive(false);
     }
 
     public void SelectTower(string TowerName)
@@ -61,9 +61,9 @@ public class TowerSpawnUI : MonoBehaviour
         if (Player.Currency > 0 && Player.Currency >= tower.InitialCost)
         {
             // Spawn tower to Spawn Point that was given
-            Player.Currency -= tower.InitialCost;
+            Player.GainCurrency(-tower.InitialCost);
             Instantiate(SelectedTowerObj, SpawnAt);
-            
+
             LastChosenSocket.IsOccupied = true;
             LastChosenSocket = null;
             SpawnAt = null;
