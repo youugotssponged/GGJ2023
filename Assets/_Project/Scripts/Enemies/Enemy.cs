@@ -51,5 +51,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public void CreditPlayer()
     {
         GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<IPlayer>().Currency += this.CurrencyReward;
+        //ToDo Replace this ^ with the following.
+        //GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player>().GainCurrency(this.CurrencyReward);
     }
 }
