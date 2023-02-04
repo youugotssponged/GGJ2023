@@ -8,6 +8,7 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
     private IPlayer Player;
     private ITower SelectedTower;
     public AudioClip CashRegisterSound;
+    public AudioClip UpgradeDenied;
     private AudioSource _Source;
     public GameObject TowerUpgradeUIPanelRef;
     private GameObject TowerToSell;
@@ -40,16 +41,23 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
 
     public void ApplyUpgrade()
     {
-        int upgradeCost = SelectedTower.InitialCost * SelectedTower.UpgradeLevel;
-        if (Player.Currency > 0 && Player.Currency >= upgradeCost)
+        if (SelectedTower.UpgradeLevel != 4)
         {
-            SelectedTower.UpgradeLevel += 1;
-            Player.Currency -= upgradeCost;
-            SelectedTower.TotalSpentOnTower += upgradeCost;
+            int upgradeCost = SelectedTower.InitialCost * SelectedTower.UpgradeLevel;
+            if (Player.Currency > 0 && Player.Currency >= upgradeCost)
+            {
+                SelectedTower.UpgradeLevel += 1;
+                Player.Currency -= upgradeCost;
+                SelectedTower.TotalSpentOnTower += upgradeCost;
 
-            SelectedTower.ApplyUpgrade();
-            _Source.Play();
-            CloseUpgradeMenu();
+                SelectedTower.ApplyUpgrade();
+                _Source.Play();
+                CloseUpgradeMenu();
+            }
+        } 
+        else
+        {
+            _Source.PlayOneShot(UpgradeDenied);
         }
     }
 

@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 379665332984949572, guid: e7513e7973246c644ac3e70027ee9f72, type: 3}
       propertyPath: PlayerCurrencyText
       value: 
-      objectReference: {fileID: 6113482215543487093}
+      objectReference: {fileID: 0}
     - target: {fileID: 1666154865040544649, guid: e7513e7973246c644ac3e70027ee9f72, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -207,17 +207,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7513e7973246c644ac3e70027ee9f72, type: 3}
---- !u!114 &6113482215543487093 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 20990882736493306, guid: e7513e7973246c644ac3e70027ee9f72, type: 3}
-  m_PrefabInstance: {fileID: 6097276549447608463}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &6226060558842159162 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 214635256249026741, guid: e7513e7973246c644ac3e70027ee9f72, type: 3}
@@ -314,6 +303,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6645190866866736312, guid: 40af4bc7a80d1594f98f4332404ac920, type: 3}
+      propertyPath: UpgradeDenied
+      value: 
+      objectReference: {fileID: 8300000, guid: 19500d8955e7aaf4285ac6ed3e0a6c12, type: 3}
     - target: {fileID: 6645190866866736315, guid: 40af4bc7a80d1594f98f4332404ac920, type: 3}
       propertyPath: m_Name
       value: TowerUpgradeUI
