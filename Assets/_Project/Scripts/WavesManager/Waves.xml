@@ -18,7 +18,43 @@
 		<strong>1</strong>
 		<spawnSpeed>1.0</spawnSpeed>
 	</wave>
-	<wave id="wave3">
+	<wave id="wave4">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave5">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave6">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave7">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave8">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave9">
+		<normal>5</normal>
+		<fast>3</fast>
+		<strong>2</strong>
+		<spawnSpeed>0.5</spawnSpeed>
+	</wave>
+	<wave id="wave10">
 		<normal>5</normal>
 		<fast>3</fast>
 		<strong>2</strong>
