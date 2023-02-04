@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     private CinemachineVirtualCamera virtualCamera;
     private CinemachineFramingTransposer framingTransposer;
 
+    public bool allowDragging { get; set; } = true;
     public float dragSpeed = 0.5f;
     private bool isDragging = false;
 
@@ -36,7 +37,16 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         HandleZoom();
-        HandleMouseDrag(Input.mousePosition);
+        if (allowDragging)
+        {
+            HandleMouseDrag();
+        }
+        else if (isDragging)
+        {
+            isDragging = false;
+            Cursor.visible = true;
+        }
+
     }
 
     private void HandleZoom()
@@ -47,7 +57,7 @@ public class CameraController : MonoBehaviour
         framingTransposer.m_CameraDistance = Mathf.SmoothDamp(framingTransposer.m_CameraDistance, currentZoom, ref zoomVelocityRef, 0.07f);
     }
 
-    private void HandleMouseDrag(Vector3 mousePos)
+    private void HandleMouseDrag()
     {
         if (Input.GetMouseButtonDown(0)) //on frame that mouse is pressed
         {
