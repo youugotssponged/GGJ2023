@@ -1,57 +1,78 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TowerUpgradeUI : MonoBehaviour
+[RequireComponent(typeof(AudioSource))]
+public class TowerUpgradeUI : MonoBehaviour, IDisposable
 {
-    [SerializeField] private IPlayer Player;
-
-    public void Awake()
-    {
-        Player = new FakePlayer();
-    }
-
-    // Start is called before the first frame update
+    private IPlayer Player;
+    private ITower SelectedTower;
+    public AudioClip CashRegisterSound;
+    public Text PlayerCurrencyText;
+    public Text UpgradeCostText;
+    private AudioSource _Source;
     public GameObject TowerUpgradeUIPanelRef;
     private GameObject TowerToSell;
     private TowerSocket SocketRef;
     public double SellTaxPercent = 0.75d;
 
-    public void SellSelectedTower()
+    public void Awake()
     {
-        // Increment Player Tower cost + upgrade spent cost - sell penalty
-        var tower = TowerToSell.GetComponent<ITower>();
-        Player.Currency += (int)(tower.TotalSpentOnTower * SellTaxPercent);
-        SocketRef.IsOccupied = false;
-        Destroy(TowerToSell);
-        CloseUpgradeMenu();
+        _Source = GetComponent<AudioSource>();
+        _Source.clip = CashRegisterSound;
+        Player = GameObject.Find("Player").GetComponent<IPlayer>();
     }
 
     public void ShowUpgradeMenu(TowerSocket socketToApplyTowerUpgradeTo)
     {
         SocketRef = socketToApplyTowerUpgradeTo;
         TowerToSell = socketToApplyTowerUpgradeTo.SpawnPoint.GetChild(1).gameObject;
+        SelectedTower = TowerToSell.GetComponent<ITower>();
+        PlayerCurrencyText.text = "Currency: " + Player.Currency;
+        UpgradeCostText.text = "Upgrade cost: " + SelectedTower.InitialCost * SelectedTower.UpgradeLevel;
         TowerUpgradeUIPanelRef.SetActive(true);
+    }
+
+    public void SellSelectedTower()
+    {
+        Player.Currency += (int)(SelectedTower.TotalSpentOnTower * SellTaxPercent);
+        SocketRef.IsOccupied = false;
+        Destroy(TowerToSell);
+        _Source.Play();
+        CloseUpgradeMenu();
     }
 
     public void ApplyUpgrade()
     {
-        var tower = TowerToSell.GetComponent<ITower>();
-        tower.UpgradeLevel += 1;
-        Player.Currency -= tower.InitialCost * tower.UpgradeLevel;
-        tower.TotalSpentOnTower += tower.InitialCost * tower.UpgradeLevel;
+        int upgradeCost = SelectedTower.InitialCost * SelectedTower.UpgradeLevel;
+        if (Player.Currency > 0 && Player.Currency >= upgradeCost)
+        {
 
-        tower.ApplyUpgrade();
+            SelectedTower.UpgradeLevel += 1;
+            Player.Currency -= upgradeCost;
+            SelectedTower.TotalSpentOnTower += upgradeCost;
 
-        SocketRef = null;
-        TowerToSell = null;
-        CloseUpgradeMenu();
+            SelectedTower.ApplyUpgrade();
+            _Source.Play();
+            CloseUpgradeMenu();
+        }
     }
 
     public void CloseUpgradeMenu()
     {
+        ReleaseReferences();
+        TowerUpgradeUIPanelRef.SetActive(false);
+    }
+
+    private void ReleaseReferences()
+    {
         TowerToSell = null;
         SocketRef = null;
-        TowerUpgradeUIPanelRef.SetActive(false);
+        SelectedTower = null;
+    }
+
+    public void Dispose()
+    {
+        ReleaseReferences();
     }
 }
