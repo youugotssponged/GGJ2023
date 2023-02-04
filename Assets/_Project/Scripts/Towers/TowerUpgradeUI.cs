@@ -47,7 +47,6 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
         int upgradeCost = SelectedTower.InitialCost * SelectedTower.UpgradeLevel;
         if (Player.Currency > 0 && Player.Currency >= upgradeCost)
         {
-
             SelectedTower.UpgradeLevel += 1;
             Player.Currency -= upgradeCost;
             SelectedTower.TotalSpentOnTower += upgradeCost;

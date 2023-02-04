@@ -8,7 +8,12 @@ public class SniperTower : MonoBehaviour, ITower
     public int InitialCost => 10;
     public int UpgradeLevel { get; set; } = 1;
     public int TotalSpentOnTower { get; set; }
-    
+
+    public void Awake()
+    {
+        TotalSpentOnTower = InitialCost;
+    }
+
     public void ApplyUpgrade()
     {
 

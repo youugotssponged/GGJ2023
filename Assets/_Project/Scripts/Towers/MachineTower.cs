@@ -9,6 +9,11 @@ public class MachineTower : MonoBehaviour, ITower
     public int UpgradeLevel { get; set; } = 1;
     public int TotalSpentOnTower { get; set; }
 
+    public void Awake()
+    {
+        TotalSpentOnTower = InitialCost;
+    }
+
     public void ApplyUpgrade()
     {
 
