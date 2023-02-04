@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SniperTower : MonoBehaviour, ITower
@@ -8,6 +6,9 @@ public class SniperTower : MonoBehaviour, ITower
     public int InitialCost => 10;
     public int UpgradeLevel { get; set; } = 1;
     public int TotalSpentOnTower { get; set; }
+    public float CoolDownTimeInSeconds => 5;
+    public int Damage => 100;
+    [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
 
     public void Awake()
     {
@@ -15,11 +16,6 @@ public class SniperTower : MonoBehaviour, ITower
     }
 
     public void ApplyUpgrade()
-    {
-
-    }
-
-    public void FireWeapon()
     {
 
     }
