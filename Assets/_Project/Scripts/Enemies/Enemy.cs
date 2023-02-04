@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IEnemy
         set { _health = value; }
     }
     [SerializeField]
-    private int _attackDamage;
+    private int _attackDamage = 1;
     public int AttackDamage
     {
         get { return _attackDamage; }
