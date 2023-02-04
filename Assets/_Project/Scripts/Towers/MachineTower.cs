@@ -10,6 +10,7 @@ public class MachineTower : MonoBehaviour, ITower
 
     public int Damage => 20;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
+    [field: SerializeField] public AudioClip ShootSound { get; set; }
 
     public void Awake()
     {

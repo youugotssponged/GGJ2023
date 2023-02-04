@@ -9,6 +9,7 @@ public class SniperTower : MonoBehaviour, ITower
     public float CoolDownTimeInSeconds => 5;
     public int Damage => 100;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
+    [field: SerializeField] public AudioClip ShootSound { get; set; }
 
     public void Awake()
     {

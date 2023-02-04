@@ -10,10 +10,13 @@ public class TowerAI : MonoBehaviour
     private ITower TowerData;
     private bool InCoolDown;
 
+    public AudioSource _Source;
+
     private void Awake()
     {
         EnemiesWithinRadius = new List<GameObject>();
         TowerData = GetComponent<ITower>();
+        _Source = GetComponent<AudioSource>();
     }
     private IEnumerator TriggerCoolDown()
     {
@@ -51,6 +54,7 @@ public class TowerAI : MonoBehaviour
                     var instantiated = Instantiate(TowerData.EffectOnEnemy, selectedEnemy.transform.parent, true);
                     instantiated.transform.position = selectedEnemy.transform.position;
 
+                    _Source.PlayOneShot(TowerData.ShootSound);
                     selectedEnemy.GetComponent<IEnemy>().TakeDamage(TowerData.Damage);
                     StartCoroutine(nameof(TriggerCoolDown));
                 }

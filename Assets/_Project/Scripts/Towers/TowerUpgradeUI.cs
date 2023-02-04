@@ -8,8 +8,6 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
     private IPlayer Player;
     private ITower SelectedTower;
     public AudioClip CashRegisterSound;
-    public Text PlayerCurrencyText;
-    public Text UpgradeCostText;
     private AudioSource _Source;
     public GameObject TowerUpgradeUIPanelRef;
     private GameObject TowerToSell;
@@ -28,8 +26,6 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
         SocketRef = socketToApplyTowerUpgradeTo;
         TowerToSell = socketToApplyTowerUpgradeTo.SpawnPoint.GetChild(1).gameObject;
         SelectedTower = TowerToSell.GetComponent<ITower>();
-        PlayerCurrencyText.text = "Currency: " + Player.Currency;
-        UpgradeCostText.text = "Upgrade cost: " + SelectedTower.InitialCost * SelectedTower.UpgradeLevel;
         TowerUpgradeUIPanelRef.SetActive(true);
     }
 

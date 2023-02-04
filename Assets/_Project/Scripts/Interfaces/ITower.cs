@@ -9,5 +9,6 @@ public interface ITower
     public float CoolDownTimeInSeconds { get; }
     public int Damage { get; }
     public GameObject EffectOnEnemy { get; set; }
+    public AudioClip ShootSound { get; set; }
     public void ApplyUpgrade();
 }

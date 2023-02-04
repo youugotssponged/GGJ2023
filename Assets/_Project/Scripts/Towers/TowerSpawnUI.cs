@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class TowerSpawnUI : MonoBehaviour
@@ -10,7 +9,6 @@ public class TowerSpawnUI : MonoBehaviour
     [SerializeField] private GameObject[] TowerPrefabsToChooseFrom;
     [SerializeField] private GameObject TowerSpawnUIMenuPanel;
 
-    public Text PlayerCurrencyText;
     public AudioClip CashRegisterSound;
     private AudioSource _Source;
     private IPlayer Player;
@@ -23,7 +21,6 @@ public class TowerSpawnUI : MonoBehaviour
         _Source = GetComponent<AudioSource>();
         _Source.clip = CashRegisterSound;
         Player = GameObject.Find("Player").GetComponent<IPlayer>();
-        PlayerCurrencyText.text = "Currency: " + Player.Currency;
     }
 
     public void ShowSpawnMenu(TowerSocket socketToSpawnAt)
@@ -40,7 +37,6 @@ public class TowerSpawnUI : MonoBehaviour
 
     public void ShowSpawnMenuUI()
     {
-        PlayerCurrencyText.text = "Currency: " + Player.Currency;
         TowerSpawnUIMenuPanel.SetActive(true);
     }
 
