@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IPlayer
 {
-    public int Currency { get; set; } = 0;
+    public int Currency { get; set; } = 1000;
     public int ExperienceLevel { get; set; } = 1;
     public int Health { get; set; }
 
