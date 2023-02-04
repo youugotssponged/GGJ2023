@@ -16,8 +16,13 @@ public class Enemy : MonoBehaviour, IEnemy
         get { return _health; }
         set { _health = value; }
     }
-
-    public int AttackDamage { get; set; } = 1;
+    [SerializeField]
+    private int _attackDamage;
+    public int AttackDamage
+    {
+        get { return _attackDamage; }
+        set { _attackDamage = value; }
+    }
 
     public void TakeDamage(int recievingDamage)
     {
@@ -33,6 +38,13 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         // Destroy this and give player currency.
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameObject waveManager = GameObject.FindGameObjectWithTag("WaveManager");
+        if (waveManager != null )
+            waveManager.GetComponent<WaveManager>().UpdateEnemiesRemaining();
     }
 
     public void CreditPlayer()

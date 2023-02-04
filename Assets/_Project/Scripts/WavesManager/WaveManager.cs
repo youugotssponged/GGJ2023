@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WaveNumber = 4;
+        WaveNumber = 1;
         LoadWave();
     }
 
@@ -61,6 +61,9 @@ public class WaveManager : MonoBehaviour
             orderedEnemyObjects.Add(StrongEnemyPrefab);
         }
 
+        EnemiesRemaining = orderedEnemyObjects.Count;
+        Debug.Log(EnemiesRemaining);
+
         // Creates a shuffled list, to make the wave seem more random.
         List<GameObject> shuffledEnemyObjects = Shuffle(orderedEnemyObjects);
         foreach (GameObject enemyObject in shuffledEnemyObjects)
@@ -82,6 +85,26 @@ public class WaveManager : MonoBehaviour
             values[i] = tempObject;
         }
         return values;
+    }
+
+    public void UpdateEnemiesRemaining()
+    {
+        EnemiesRemaining--;
+        Debug.Log(EnemiesRemaining);
+
+        if (EnemiesRemaining <= 0)
+        {
+            StartCoroutine(WaitBeforeLoadingWave());
+        }
+    }
+
+    private IEnumerator WaitBeforeLoadingWave()
+    {
+        //ToDo Link to UI object that shows time remaining before next wave.
+        yield return new WaitForSeconds(10);
+
+        WaveNumber++;
+        LoadWave();
     }
 
     // Update is called once per frame
