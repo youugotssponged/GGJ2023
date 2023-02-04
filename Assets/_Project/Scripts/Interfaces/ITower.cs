@@ -10,5 +10,6 @@ public interface ITower
     public int Damage { get; }
     public GameObject EffectOnEnemy { get; set; }
     public AudioClip ShootSound { get; set; }
+    public GameObject[] UpgradeTowers { get; set; }
     public void ApplyUpgrade();
 }

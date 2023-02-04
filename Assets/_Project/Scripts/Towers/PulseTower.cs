@@ -12,6 +12,11 @@ public class PulseTower : MonoBehaviour, ITower
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
     [field: SerializeField] public AudioClip ShootSound { get; set; }
 
+    [field: SerializeField] public GameObject[] UpgradeTowers { get; set; }
+
+    private Vector3 ScaleFactor = new Vector3(0.3f, 0.3f, 0.3f);
+
+
     public void Awake()
     {
         TotalSpentOnTower = InitialCost;
@@ -19,6 +24,26 @@ public class PulseTower : MonoBehaviour, ITower
 
     public void ApplyUpgrade()
     {
+        switch (UpgradeLevel)
+        {
+            case 1:
+                break;
+            case 2:
+                SwapTowerModel(1);
+                break;
+            case 3:
+                SwapTowerModel(2);
+                break;
+            case 4:
+                SwapTowerModel(3);
+                break;
+        }
+    }
 
+    private void SwapTowerModel(int zeroIndex)
+    {
+        Destroy(gameObject.transform.GetChild(0).gameObject);
+        var go = Instantiate(UpgradeTowers[zeroIndex], gameObject.transform);
+        go.transform.localScale = ScaleFactor;
     }
 }

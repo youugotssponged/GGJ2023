@@ -33,7 +33,13 @@ public class TowerAI : MonoBehaviour
             var selectedEnemy = EnemiesWithinRadius.FirstOrDefault();
             if(selectedEnemy != null) 
             { 
-                gameObject.transform.LookAt(selectedEnemy.transform);
+                // Modify the weapon on top of the tower's lookat position
+                gameObject.transform
+                    .GetChild(0)
+                    .GetChild(0)
+                    .GetChild(0)
+                    .LookAt(selectedEnemy.transform);
+
                 if (!InCoolDown)
                 {
                     var nav = selectedEnemy.GetComponent<NavMeshAgent>();
