@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currencyReward: 20
-  _health: 200
+  _health: 250
+  _attackDamage: 1
 --- !u!54 &7072786748154085156
 Rigidbody:
   m_ObjectHideFlags: 0
