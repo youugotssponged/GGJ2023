@@ -5054,14 +5054,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3533995100978440431, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_text
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995100978440431, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3533995101786379896, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_Name
       value: Game overlay
@@ -5149,38 +5141,6 @@ PrefabInstance:
     - target: {fileID: 3533995101786379897, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102221808088, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102221808088, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102221808088, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102221808088, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102221808088, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 45.312683
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102221808088, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -84.20001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102221808088, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -47
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533995102646561517, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
-      propertyPath: m_text
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
