@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IPlayer
 {
     public int Currency { get; set; }
-    private int InitialCurrency { get; } = 1000;
+    private int InitialCurrency { get; } = 150;
     public int ExperienceLevel { get; set; } = 1;
     public int Health { get; set; }
 
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IPlayer
     private TextMeshProUGUI CurrencyText;
     private TextMeshProUGUI HealthText;
     public WaveManager WaveManager;
-    private int MaxHealth { get; } = 2;
+    private int MaxHealth { get; } = 200;
 
     // Start is called before the first frame update
     void Start()
