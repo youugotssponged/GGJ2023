@@ -93,7 +93,7 @@ public class WaveManager : MonoBehaviour
                 // Wave based percentage is 1.1%, which is 1.1.
                 // Square this value, to create exponential growth as rounds continue.
                 // Divide by 1000 to get correct percentage
-                double percentageBasedOnWave = WaveNumber / 1000.0;
+                double percentageBasedOnWave = WaveNumber / 250.0;
                 double baseHealthIncrease = originalEnemyHealth * percentageBasedOnWave;
                 instantiatedGameObject.GetComponent<Enemy>().Health += Convert.ToInt32(Math.Pow(baseHealthIncrease, 3));
             }
