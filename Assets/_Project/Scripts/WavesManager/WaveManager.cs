@@ -123,6 +123,7 @@ public class WaveManager : MonoBehaviour
         // When all enemies are destroyed, wait 10 seconds before loading next wave.
         if (EnemiesRemaining <= 0)
         {
+            GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player>().GainCurrency(150);
             if (WaveNumber == 10)
                 ShowWave11Screen();
             else
