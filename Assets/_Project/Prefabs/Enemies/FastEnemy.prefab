@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e36e6e32edfe04380abc0dd90d8e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currencyReward: 15
+  _currencyReward: 2
   _health: 100
   _attackDamage: 1
 --- !u!54 &7369553933193435372

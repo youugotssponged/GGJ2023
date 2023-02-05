@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class TowerSpawnUI : MonoBehaviour
@@ -9,6 +10,7 @@ public class TowerSpawnUI : MonoBehaviour
     [SerializeField] private GameObject[] TowerPrefabsToChooseFrom;
     [SerializeField] private GameObject TowerSpawnUIMenuPanel;
 
+    public Text SelectedTowerText;
     public AudioClip CashRegisterSound;
     private AudioSource _Source;
     private IPlayer Player;
@@ -46,6 +48,7 @@ public class TowerSpawnUI : MonoBehaviour
         SpawnAt = null;
         SelectedTowerObj = null;
         TowerSpawnUIMenuPanel.SetActive(false);
+        SelectedTowerText.text = "Selected Tower: ";
     }
 
     public void SelectTower(string TowerName)
@@ -53,6 +56,19 @@ public class TowerSpawnUI : MonoBehaviour
         SelectedTowerObj = TowerPrefabsToChooseFrom
                 .Where(x => x.name.Contains(TowerName))
                 .FirstOrDefault();
+        switch (TowerName)
+        {
+            case "MachineTower":
+                SelectedTowerText.text = "Selected Tower: Machine Tower";
+                break;
+            case "PulseTower":
+                SelectedTowerText.text = "Selected Tower: Pulse Tower";
+                break;
+            case "SniperTower":
+                SelectedTowerText.text = "Selected Tower: Sniper Tower";
+                break;
+        }
+
     }
 
     public void ConfirmTowerSelection()

@@ -7,7 +7,7 @@ public class SniperTower : MonoBehaviour, ITower
     public int UpgradeLevel { get; set; } = 1;
     public int TotalSpentOnTower { get; set; }
     public float CoolDownTimeInSeconds { get; set; } = 6;
-    public int Damage { get; set; } = 130;
+    public int Damage { get; set; } = 200;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
     [field: SerializeField] public AudioClip ShootSound { get; set; }
 
@@ -22,8 +22,8 @@ public class SniperTower : MonoBehaviour, ITower
 
     public void ApplyUpgrade()
     {
-        CoolDownTimeInSeconds -= 0.2f;
-        Damage += 30;
+        CoolDownTimeInSeconds -= 0.15f;
+        Damage += 15;
 
         var sc = GetComponent<SphereCollider>();
         sc.radius += 2f;

@@ -6,7 +6,7 @@ public class PulseTower : MonoBehaviour, ITower
     public int UpgradeLevel { get; set; } = 1;
     public int InitialCost => 200;
     public int TotalSpentOnTower { get; set; }
-    public int Damage { get; set; } = 50;
+    public int Damage { get; set; } = 130;
     public float CoolDownTimeInSeconds { get; set; } = 1.3f;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
     [field: SerializeField] public AudioClip ShootSound { get; set; }
@@ -23,8 +23,8 @@ public class PulseTower : MonoBehaviour, ITower
 
     public void ApplyUpgrade()
     {
-        CoolDownTimeInSeconds -= 0.15f;
-        Damage += 25;
+        CoolDownTimeInSeconds -= 0.1f;
+        Damage += 20;
 
         var sc = GetComponent<SphereCollider>();
         sc.radius += 1.1f;
