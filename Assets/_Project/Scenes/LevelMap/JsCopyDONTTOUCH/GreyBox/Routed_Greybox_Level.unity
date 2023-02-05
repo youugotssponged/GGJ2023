@@ -3295,11 +3295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3533995101786379897, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3533995101786379897, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3533995101786379897, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_RootOrder
@@ -3307,11 +3307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3533995101786379897, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3533995101786379897, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3533995101786379897, guid: 55e3e500c05197843a002ceddb4a9ab1, type: 3}
       propertyPath: m_AnchorMin.x
