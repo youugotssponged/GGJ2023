@@ -4,14 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class GlobalSceneManager : MonoBehaviour
 {
-    public enum SceneState : int 
+    public enum SceneState : int
     {
         SPLASHSCREEN = 0,
         MAINMENU,
-        LOADINGSCREEN,
-        SETTINGS,
-        INSTRUCTIONS,
-        CREDITS
+        RTS_LEVEL
+        //LOADINGSCREEN,
+        //SETTINGS,
+        //INSTRUCTIONS,
+        //CREDITS
     }
 
     private SceneState CurrentSceneState;
@@ -19,7 +20,7 @@ public class GlobalSceneManager : MonoBehaviour
 
     public static event Action<SceneState> OnSceneChanged;
     private static readonly Lazy<GlobalSceneManager> _lazyLoadedSceneManager = new Lazy<GlobalSceneManager>(() => new GlobalSceneManager());
-    protected GlobalSceneManager(){}
+    protected GlobalSceneManager() { }
     protected void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -34,28 +35,29 @@ public class GlobalSceneManager : MonoBehaviour
     }
 
     // Update for later key mapping for demoing game levels / parts if something breaks or doesn't work.
-    private void Update(){}
+    private void Update() { }
 
     public void UpdateSceneState(SceneState newSceneState)
     {
         CurrentSceneState = newSceneState;
 
-        try 
+        try
         {
             string sceneName = Enum.GetName(typeof(SceneState), newSceneState);
-            if(!SceneManager.GetSceneByName(sceneName).IsValid()) 
-            {
-                throw new SceneNotLoadedException(SceneNotLoadedException.DefaultMessage);
-            }
+            //SceneManager.LoadScene(sceneName);
+            //if (!SceneManager.GetSceneByName(sceneName).IsValid())
+            //{
+            //    throw new SceneNotLoadedException(SceneNotLoadedException.DefaultMessage);
+            //}
 
             SceneManager.LoadScene(sceneName);
             OnSceneChanged?.Invoke(newSceneState);
-        } 
+        }
         catch (SceneNotLoadedException ex)
         {
-            #if UNITY_EDITOR
-                Debug.LogException(ex, this);
-            #endif
+#if UNITY_EDITOR
+            Debug.LogException(ex, this);
+#endif
             throw; // continue stack propigation for trace
         }
     }
@@ -64,7 +66,7 @@ public class GlobalSceneManager : MonoBehaviour
 // JM - I created an exception class because SceneManager.LoadScene() does not THROW and is VOID!
 // Should pop this into a different file at some point, but is only used here atm.
 [System.Serializable]
-public class SceneNotLoadedException : System.Exception 
+public class SceneNotLoadedException : System.Exception
 {
     public static readonly string DefaultMessage = "Scene not found, please double check that the scene exists and is included in the build index settings.";
     public SceneNotLoadedException() { }

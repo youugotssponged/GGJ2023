@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7364500788094688204}
   - component: {fileID: 4365838632311872668}
   - component: {fileID: -4801649207794443342}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SniperTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,13 +260,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3944173844251276342, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1618608917287834628, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
       propertyPath: m_Name
       value: cannon_tower_LVL_1_rig
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324468658511410955, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1873567483714858872, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291,6 +307,18 @@ PrefabInstance:
     - target: {fileID: 1873567483714858872, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603862374289996612, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3147737864023737511, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951178628523241345, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 652ed77a1f065424bb737e1bb35f4679, type: 3}

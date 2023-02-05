@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1752476459006665658}
   - component: {fileID: 6071740957037410312}
   - component: {fileID: 2994838865126924660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MachineTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,9 +240,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6258243381518957391, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5778673593936727792, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5558145603646734261, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4172291982640847806, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1594880860764431119, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1321788330870658897, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -568690677035880307, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
       propertyPath: m_Name
       value: ballista_tower_LVL_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777354348132274375, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456396874554338647, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879012570711272359, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d2ac510da99a5c44b743b4392a6a79b, type: 3}
