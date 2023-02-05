@@ -116,7 +116,9 @@ public class Player : MonoBehaviour, IPlayer
         var sockets = FindObjectsOfType<TowerSocket>();
         foreach (var socket in sockets)
         {
-            Destroy(socket.GetComponentInChildren<TowerAI>().gameObject);
+            var tower = socket.GetComponentInChildren<TowerAI>();
+            if (tower != null)
+                Destroy(tower.gameObject);
             socket.IsOccupied = false;
         }
 
@@ -125,7 +127,8 @@ public class Player : MonoBehaviour, IPlayer
 
     public void MainMenuButtonPressed()
     {
-        Debug.Log("Loading main menu scene...");
+        Time.timeScale = 1f;
+        GlobalSceneManager.Instance.UpdateSceneState(GlobalSceneManager.SceneState.MAINMENU);
     }
 
 }

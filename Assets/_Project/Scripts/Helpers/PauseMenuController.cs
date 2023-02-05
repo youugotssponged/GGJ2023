@@ -12,12 +12,12 @@ public class PauseMenuController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused)
+            if (isPaused)
                 Resume();
             else
-                Pause();   
+                Pause();
         }
     }
     public void Pause()
@@ -34,12 +34,18 @@ public class PauseMenuController : MonoBehaviour
         PauseMenuOverlay.SetActive(false);
     }
 
+    public void MainMenuButtonHandler()
+    {
+        Time.timeScale = 1f;
+        GlobalSceneManager.Instance.UpdateSceneState(GlobalSceneManager.SceneState.MAINMENU);
+    }
+
     public void ExitGameToDesktopButtonHandler()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
 }

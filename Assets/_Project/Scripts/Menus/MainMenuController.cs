@@ -14,9 +14,15 @@ public class MainMenuController : MonoBehaviour
 
     }
 
+    public void PlayButtonClicked() => GlobalSceneManager.Instance.UpdateSceneState(GlobalSceneManager.SceneState.RTS_LEVEL);
+
     public void ExitButtonClicked()
     {
-        Debug.Log("exit button");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
 }
