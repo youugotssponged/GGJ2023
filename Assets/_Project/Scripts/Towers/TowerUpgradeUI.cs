@@ -26,9 +26,11 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
     public void ShowUpgradeMenu(TowerSocket socketToApplyTowerUpgradeTo)
     {
         SocketRef = socketToApplyTowerUpgradeTo;
-        TowerToSell = socketToApplyTowerUpgradeTo.SpawnPoint.GetChild(1).gameObject;
+        TowerToSell = socketToApplyTowerUpgradeTo.SpawnPoint.GetChild(2).gameObject;
         SelectedTower = TowerToSell.GetComponent<ITower>();
         TowerUpgradeUIPanelRef.SetActive(true);
+
+        Debug.Log("SelectedTower not null: " + SelectedTower != null);
         UpgradeCostText.text = "Next Upgrade: " + (SelectedTower.InitialCost * SelectedTower.UpgradeLevel);
     }
 
