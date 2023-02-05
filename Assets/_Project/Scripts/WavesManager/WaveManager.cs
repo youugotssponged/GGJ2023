@@ -29,7 +29,7 @@ public class WaveManager : MonoBehaviour
         WaveCounterText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>().First(x => x.name == "Wave count");
         NextWaveCountdownText = GameObject.Find("Game overlay").GetComponentsInChildren<TextMeshProUGUI>(true).First(x => x.name == "Next wave countdown");
         Wave11Screen = GameObject.Find("Hidden").GetComponentsInChildren<Canvas>(true).First(x => x.name == "Wave 11 panel").gameObject;
-        WaveNumber = 10;
+        WaveNumber = 1;
         LoadWave();
     }
 
