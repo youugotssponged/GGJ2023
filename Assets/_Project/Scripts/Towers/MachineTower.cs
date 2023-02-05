@@ -8,7 +8,7 @@ public class MachineTower : MonoBehaviour, ITower
     public int TotalSpentOnTower { get; set; }
     public float CoolDownTimeInSeconds { get; set; } = 0.65f;
 
-    public int Damage { get; set; } = 30;
+    public int Damage { get; set; } = 100;
     [field: SerializeField] public GameObject EffectOnEnemy { get; set; }
     [field: SerializeField] public AudioClip ShootSound { get; set; }
     [field: SerializeField] public GameObject[] UpgradeTowers { get; set; }
@@ -22,8 +22,8 @@ public class MachineTower : MonoBehaviour, ITower
 
     public void ApplyUpgrade()
     {
-        CoolDownTimeInSeconds -= 0.1f;
-        Damage += 50;
+        CoolDownTimeInSeconds -= 0.05f;
+        Damage += 10;
 
         var sc = GetComponent<SphereCollider>();
         sc.radius += 1;

@@ -31,7 +31,7 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
         TowerUpgradeUIPanelRef.SetActive(true);
 
         Debug.Log("SelectedTower not null: " + SelectedTower != null);
-        UpgradeCostText.text = "Next Upgrade: " + (SelectedTower.InitialCost * SelectedTower.UpgradeLevel);
+        UpgradeCostText.text = "Next Upgrade: " + (SelectedTower.InitialCost * (SelectedTower.UpgradeLevel + 1));
     }
 
     public void SellSelectedTower()
@@ -47,7 +47,7 @@ public class TowerUpgradeUI : MonoBehaviour, IDisposable
     {
         if (SelectedTower.UpgradeLevel != 4)
         {
-            int upgradeCost = SelectedTower.InitialCost * SelectedTower.UpgradeLevel;
+            int upgradeCost = SelectedTower.InitialCost * (SelectedTower.UpgradeLevel + 1);
             if (Player.Currency > 0 && Player.Currency >= upgradeCost)
             {
                 SelectedTower.UpgradeLevel += 1;
